@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "17523193155",
+    "project_id": "nazarih-9bb05",
+    "storage_bucket": "nazarih-9bb05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17523193155:android:f0a1aeb24581bc9c7b2bf6",
+        "android_client_info": {
+          "package_name": "nazrah.sa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17523193155-ad0gim69pfspmgklau10516kiatpnibu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCforV_GV7PnJcFWIIINU1-VfDDhS1XzCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17523193155-ad0gim69pfspmgklau10516kiatpnibu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

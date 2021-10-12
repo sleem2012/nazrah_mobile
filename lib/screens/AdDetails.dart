@@ -120,23 +120,21 @@ class _AdDetailsState extends State<AdDetails> {
                 stream: loadAdDetails(docId),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    String selectedCategory =
-                        snapshot.data.data()['selectedCategory'];
+                    String selectedCategory = snapshot.data.data()['selectedCategory'];
                     String subCategory = snapshot.data.data()['subCategory'];
                     String country = snapshot.data.data()['Country'];
                     String location = snapshot.data.data()['subCountry'];
                     String title = snapshot.data.data()['Title'];
-                    String communication =
-                        snapshot.data.data()['Communication'];
+                    String communication = snapshot.data.data()['Communication'];
                     String description = snapshot.data.data()['Description'];
                     String priceBool = snapshot.data.data()['priceBool'];
                     String price = snapshot.data.data()['price'];
                     String photoBool = snapshot.data.data()['photoBool'];
                     String userName = snapshot.data.data()['userName'];
                     String user = snapshot.data.data()['user'];
+                    String membership=snapshot.data.data()['Membership'];
 
-                    final Timestamp timestamp =
-                        snapshot.data.data()['date'] as Timestamp;
+                    final Timestamp timestamp = snapshot.data.data()['date'] as Timestamp;
                     final DateTime dateTime = timestamp.toDate();
 
                     int dateDays = DateTime.now().difference(dateTime).inDays;
@@ -157,42 +155,18 @@ class _AdDetailsState extends State<AdDetails> {
                         Padding(
                           padding: const EdgeInsets.only(left: 20, right: 20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFF2980b9),
-                                    borderRadius: BorderRadius.circular(30),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.blue[100],
-                                          spreadRadius: 10,
-                                          blurRadius: 20)
-                                    ]),
-                                //width: 50,
-                                child: Padding(
-                                    padding: EdgeInsets.all(10),
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-                                        (priceBool == 'true')
-                                            ? "$price ريال"
-                                            : 'لم يتم تحديد السعر',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'Bahij',
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    )),
-                              ),
-                              Text(
-                                title,
-                                style: TextStyle(
-                                    fontFamily: 'Bahij',
-                                    fontSize: 30,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                              Expanded(
+                                child: Text(
+                                  title,
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                      fontFamily: 'Bahij',
+                                      fontSize: 20,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ],
                           ),
@@ -211,6 +185,8 @@ class _AdDetailsState extends State<AdDetails> {
                                     onTap: () async {
                                       if (phoneNo != null) {
                                         String username;
+                                        String membership2;
+
                                         await FirebaseFirestore.instance
                                             .collection('users')
                                             .doc(phoneNo)
@@ -220,6 +196,8 @@ class _AdDetailsState extends State<AdDetails> {
                                                 {
                                                   username = documentSnapshot
                                                       .data()['Name'],
+                                                  membership2 = documentSnapshot.data()['Membership'],
+
                                                 });
                                         if (username == userName) {
                                           Navigator.push(
@@ -245,13 +223,33 @@ class _AdDetailsState extends State<AdDetails> {
                                         }
                                       }
                                     },
-                                    child: Text(
-                                      userName,
-                                      style: TextStyle(
-                                          fontFamily: 'Bahij',
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          decoration: TextDecoration.underline),
+                                    child: Row(
+                                      children: [
+                                        (membership == 'Premium')
+                                            ? Row(
+                                          children: [
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Image.asset(
+                                              'assets/images/icons/star.png',
+                                              height: 20,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                          ],
+                                        )
+                                            : Container(),
+                                        Text(
+                                          userName,
+                                          style: TextStyle(
+                                              fontFamily: 'Bahij',
+                                              fontSize: 20,
+                                              color: Colors.black,
+                                              decoration: TextDecoration.underline),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                   SizedBox(
@@ -388,16 +386,18 @@ class _AdDetailsState extends State<AdDetails> {
                           padding: const EdgeInsets.only(left: 20, right: 20),
                           child: Text(
                             description,
+                            textDirection: TextDirection.rtl,
+
                             style: TextStyle(
                               fontFamily: 'Bahij',
-                              fontSize: 30,
+                              fontSize: 20,
                               color: Colors.black,
                             ),
                             textAlign: TextAlign.right,
                           ),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -410,10 +410,12 @@ class _AdDetailsState extends State<AdDetails> {
                                   children: [
                                     Text(
                                       country,
+                                      textDirection: TextDirection.rtl,
                                       style: TextStyle(
                                         fontFamily: 'Bahij',
                                         fontSize: 20,
                                         color: Colors.black,
+
                                       ),
                                     ),
                                     SizedBox(
@@ -495,6 +497,36 @@ class _AdDetailsState extends State<AdDetails> {
                               ],
                             )
                           ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Color(0xFF2980b9),
+                              borderRadius: BorderRadius.circular(30),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.blue[100],
+                                    spreadRadius: 10,
+                                    blurRadius: 20)
+                              ]),
+                          //width: 50,
+                          child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Text(
+                                  (priceBool == 'true')
+                                      ? "$price ريال"
+                                      : 'لم يتم تحديد السعر',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'Bahij',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )),
                         ),
                         SizedBox(
                           height: 20,

@@ -10,8 +10,11 @@ class AdDisplayInfo {
       selectedCategory,
       subCategory,
       user,
-      photoPath;
-  int dateDays, dateHours, dateMins;
+      photoPath,
+      membership,
+      commission,
+      communication;
+      int dateDays, dateHours, dateMins;
   AdDisplayInfo(
       {this.title,
       this.docId,
@@ -25,7 +28,10 @@ class AdDisplayInfo {
       this.photoBool,
       this.selectedCategory,
       this.subCategory,
+      this.membership,
       this.dateDays,
       this.dateHours,
+      this.communication,
+      this.commission,
       this.dateMins});
 }

@@ -170,25 +170,25 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                                     children: [
                                       (membership == 'Premium')
                                           ? Row(
-                                              children: [
-                                                Text(
-                                                  "عضوية نظره المدفوعة",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Bahij',
-                                                      fontSize: 20,
-                                                      color: Colors.black,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                SizedBox(
-                                                  width: 5,
-                                                ),
-                                                Image.asset(
-                                                  'assets/images/icons/star.png',
-                                                  height: 25,
-                                                ),
-                                              ],
-                                            )
+                                        children: [
+                                          Text(
+                                            "",
+                                            style: TextStyle(
+                                                fontFamily: 'Bahij',
+                                                fontSize: 15,
+                                                color: Colors.black,
+                                                fontWeight:
+                                                FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Image.asset(
+                                            'assets/images/icons/star.png',
+                                            height: 12,
+                                          ),
+                                        ],
+                                      )
                                           : Container(),
                                       SizedBox(
                                         height: 10,
@@ -210,7 +210,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                                                 ),
                                                 Image.asset(
                                                   'assets/images/icons/invoice.png',
-                                                  height: 25,
+                                                  height: 12,
                                                 ),
                                               ],
                                             )

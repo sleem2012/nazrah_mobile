@@ -320,7 +320,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                           padding: EdgeInsets.only(left: 20, right: 20),
                           child: Container(
                             width: double.infinity,
-                            height: 600,
+                            height: 650,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: Color(0xFF2980b9),
@@ -366,14 +366,16 @@ class _MembershipScreenState extends State<MembershipScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 30, right: 30),
-                                  child: UnorderedListMobile([
+                                  child: UnorderedListMobile(
+                                    [
                                     "عدم الاعلان للغير",
                                     "عدم تكرار الإعلان عن نفس السلعة أكثر من مره خلال يومين",
                                     "عدم التنازل عن العضوية لعضو آخر او بيع العضوية",
                                     "ذكر سعر السلعة",
                                     'الرد على رسائل اعضاء الموقع عبر الرسائل الخاصة',
                                     'الرد على استفسارات اعضاء الموقع عبر الردود'
-                                  ]),
+                                  ],
+                                  ),
                                 ),
                               ],
                             ),

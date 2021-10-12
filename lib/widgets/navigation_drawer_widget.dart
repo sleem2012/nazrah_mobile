@@ -52,6 +52,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                           urlImage: snapshot.data.toString(),
                           name: name,
                           ontap: () {
+                            Navigator.pop(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -73,6 +74,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'الاشعارات',
                 icon: Icons.notifications,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -85,6 +88,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'الرسائل',
                 icon: Icons.chat,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -106,6 +111,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'العضويات',
                 icon: Icons.card_membership,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => MembershipScreen()),
@@ -115,6 +122,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'العمولة',
                 icon: Icons.calculate,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => CommissionScreen()),
@@ -141,6 +150,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                               text: 'تسجيل مندوب',
                               icon: Icons.app_registration,
                               ontap: () {
+                                Navigator.pop(context);
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -168,6 +179,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                             text: 'تسجيل مندوب',
                             icon: Icons.app_registration,
                             ontap: () {
+                              Navigator.pop(context);
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -191,6 +204,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'اتفاقية استخدام الموقع والمعلومات',
                 icon: Icons.rule,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => TermsScreen()),
@@ -206,6 +221,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                         text: 'السلع والإعلانات الممنوعة',
                         icon: Icons.cancel,
                         ontap: () {
+                          Navigator.pop(context);
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -220,6 +237,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                       text: 'السلع والإعلانات الممنوعة',
                       icon: Icons.cancel,
                       ontap: () {
+                        Navigator.pop(context);
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -242,6 +261,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                 text: 'أتصل بنا',
                 icon: Icons.contact_support,
                 ontap: () {
+                  Navigator.pop(context);
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ContactScreen()),

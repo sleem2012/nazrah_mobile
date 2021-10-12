@@ -164,7 +164,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                                     "لاتوجد محادثات فالوقت الحالي",
                                     style: TextStyle(
                                         fontFamily: 'Bahij',
-                                        fontSize: 25,
+                                        fontSize: 18,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -216,10 +216,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                                                   .data()['rating'];
                                               String commission = snapshot.data
                                                   .data()['Commission'];
-                                              String membership = snapshot.data
-                                                  .data()['Membership'];
-                                              String photoUrl = snapshot.data
-                                                  .data()['photo_url'];
+                                              String membership = snapshot.data.data()['Membership'];
+                                              String photoUrl = snapshot.data.data()['photo_url'];
 
                                               double rating =
                                                   (rating_count != 0)
@@ -344,19 +342,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
-                                                                Text(
-                                                                  "عضوية نظره المدفوعة",
-                                                                  style: TextStyle(
-                                                                      fontFamily:
-                                                                          'Bahij',
-                                                                      fontSize:
-                                                                          20,
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold),
-                                                                ),
+
                                                                 SizedBox(
                                                                   width: 5,
                                                                 ),

@@ -31,6 +31,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int groupValue = 0;
   String title = 'كل المناطق';
+
+
+
   List<String> _list = [
     'كل المناطق',
     'الرياض',
@@ -290,6 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isStrechedDropDownArar = false;
   int groupValueArar = 0;
   String titleArar = 'الكل';
+  final TextEditingController searchController = TextEditingController();
 
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -313,10 +317,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double width=MediaQuery.of(context).size.width;
+
     return Scaffold(
       endDrawer: NavigationDrawerWidget(phoneNo),
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xFF2980b9),
+      floatingActionButton: FloatingActionButton(
+        child:Icon(
+          Icons.add,
+          color: Colors.white,
+          //size: 30,
+        ),
+        backgroundColor:Color(0xFF2980b9),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddAdScreen(
+                    phoneNo: phoneNo,
+                  )),
+            );
+          }
+      ),
       appBar: AppBar(
         toolbarHeight: 75,
         title: Image.asset(
@@ -325,21 +348,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         backgroundColor: Color(0xFF2980b9),
-        leading: IconButton(
-            icon: Icon(
-              Icons.add,
-              color: Colors.white,
-              //size: 30,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AddAdScreen(
-                          phoneNo: phoneNo,
-                        )),
-              );
-            }),
+        // leading: IconButton(
+        //     icon: Icon(
+        //       Icons.add,
+        //       color: Colors.white,
+        //       //size: 30,
+        //     ),
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => AddAdScreen(
+        //                   phoneNo: phoneNo,
+        //                 )),
+        //       );
+        //     }),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -355,6 +378,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       textDirection: TextDirection.rtl,
                       child: TextField(
                         textAlign: TextAlign.right,
+                      controller: searchController,
+                      autocorrect: false,
                         onChanged: (val) {
                           setState(() {
                             query = val;
@@ -364,6 +389,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             hintText: 'أبحث عن سلعة..',
                             fillColor: Colors.blueGrey[50],
                             filled: true,
+                            icon: Visibility(
+                              visible: query!='',
+                              child: GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    searchController.clear();
+                                    query='';
+                                  });
+                                },
+                                  child: Icon(
+                                    Icons.close,
+                                    color: Colors.white,
+                                  ),
+                              ),
+                            ),
                             // icon: Icon(Icons.phone_android),
                             labelStyle: TextStyle(
                               fontSize: 20,
@@ -4068,6 +4108,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: ListView(
                                             scrollDirection: Axis.horizontal,
                                             reverse: true,
+                                            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                             children: [
                                               SizedBox(
                                                 width: 15,
@@ -4203,6 +4245,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: Container(
                                               height: 40,
                                               child: ListView(
+                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 reverse: true,
@@ -4518,6 +4562,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               child: Container(
                                                   height: 40,
                                                   child: ListView(
+                                                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                     scrollDirection:
                                                         Axis.horizontal,
                                                     reverse: true,
@@ -4879,6 +4925,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   child: Container(
                                                       height: 40,
                                                       child: ListView(
+                                                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                         scrollDirection:
                                                             Axis.horizontal,
                                                         reverse: true,
@@ -5130,6 +5178,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                       child: Container(
                                                           height: 40,
                                                           child: ListView(
+                                                              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                             scrollDirection:
                                                                 Axis.horizontal,
                                                             reverse: true,
@@ -5666,6 +5716,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           child: Container(
                                                               height: 40,
                                                               child: ListView(
+                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                 scrollDirection:
                                                                     Axis.horizontal,
                                                                 reverse: true,
@@ -5903,7 +5955,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                   height: 40,
                                                                   child:
                                                                       ListView(
-                                                                    scrollDirection:
+                                                                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
+                                                                        scrollDirection:
                                                                         Axis.horizontal,
                                                                     reverse:
                                                                         true,
@@ -6007,7 +6061,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               40,
                                                                           child:
                                                                               ListView(
-                                                                            scrollDirection:
+                                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
+                                                                                scrollDirection:
                                                                                 Axis.horizontal,
                                                                             reverse:
                                                                                 true,
@@ -6156,6 +6212,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                       child: Container(
                                                                           height: 40,
                                                                           child: ListView(
+                                                                              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                             scrollDirection:
                                                                                 Axis.horizontal,
                                                                             reverse:
@@ -6303,6 +6361,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                           child: Container(
                                                                               height: 40,
                                                                               child: ListView(
+                                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                 scrollDirection: Axis.horizontal,
                                                                                 reverse: true,
                                                                                 children: [
@@ -6391,6 +6451,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                               child: Container(
                                                                                   height: 40,
                                                                                   child: ListView(
+                                                                                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                     scrollDirection: Axis.horizontal,
                                                                                     reverse: true,
                                                                                     children: [
@@ -6502,6 +6564,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                   child: Container(
                                                                                       height: 40,
                                                                                       child: ListView(
+                                                                                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                         scrollDirection: Axis.horizontal,
                                                                                         reverse: true,
                                                                                         children: [
@@ -6605,6 +6669,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                       child: Container(
                                                                                           height: 40,
                                                                                           child: ListView(
+                                                                                              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                             scrollDirection: Axis.horizontal,
                                                                                             reverse: true,
                                                                                             children: [
@@ -6692,6 +6758,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                           child: Container(
                                                                                               height: 40,
                                                                                               child: ListView(
+                                                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                 scrollDirection: Axis.horizontal,
                                                                                                 reverse: true,
                                                                                                 children: [
@@ -6747,6 +6815,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                               child: Container(
                                                                                                   height: 40,
                                                                                                   child: ListView(
+                                                                                                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                     scrollDirection: Axis.horizontal,
                                                                                                     reverse: true,
                                                                                                     children: [
@@ -6794,6 +6864,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                   child: Container(
                                                                                                       height: 40,
                                                                                                       child: ListView(
+                                                                                                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                         scrollDirection: Axis.horizontal,
                                                                                                         reverse: true,
                                                                                                         children: [
@@ -6913,6 +6985,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                       child: Container(
                                                                                                           height: 40,
                                                                                                           child: ListView(
+                                                                                                              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                             scrollDirection: Axis.horizontal,
                                                                                                             reverse: true,
                                                                                                             children: [
@@ -7000,6 +7074,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                           child: Container(
                                                                                                               height: 40,
                                                                                                               child: ListView(
+                                                                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                 scrollDirection: Axis.horizontal,
                                                                                                                 reverse: true,
                                                                                                                 children: [
@@ -7079,6 +7155,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                               child: Container(
                                                                                                                   height: 40,
                                                                                                                   child: ListView(
+                                                                                                                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                     scrollDirection: Axis.horizontal,
                                                                                                                     reverse: true,
                                                                                                                     children: [
@@ -7142,6 +7220,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                   child: Container(
                                                                                                                       height: 40,
                                                                                                                       child: ListView(
+                                                                                                                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                         scrollDirection: Axis.horizontal,
                                                                                                                         reverse: true,
                                                                                                                         children: [
@@ -7397,6 +7477,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                       child: Container(
                                                                                                                           height: 40,
                                                                                                                           child: ListView(
+                                                                                                                              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                             scrollDirection: Axis.horizontal,
                                                                                                                             reverse: true,
                                                                                                                             children: [
@@ -7492,6 +7574,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                           child: Container(
                                                                                                                               height: 40,
                                                                                                                               child: ListView(
+                                                                                                                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                 scrollDirection: Axis.horizontal,
                                                                                                                                 reverse: true,
                                                                                                                                 children: [
@@ -7587,6 +7671,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                               child: Container(
                                                                                                                                   height: 40,
                                                                                                                                   child: ListView(
+                                                                                                                                      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                     scrollDirection: Axis.horizontal,
                                                                                                                                     reverse: true,
                                                                                                                                     children: [
@@ -7643,6 +7729,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                                       height: 40,
                                                                                                                                       child: ListView(
                                                                                                                                         scrollDirection: Axis.horizontal,
+                                                                                                                                        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                         reverse: true,
                                                                                                                                         children: [
                                                                                                                                           SizedBox(
@@ -7690,6 +7778,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                                           height: 40,
                                                                                                                                           child: ListView(
                                                                                                                                             scrollDirection: Axis.horizontal,
+                                                                                                                                            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                             reverse: true,
                                                                                                                                             children: [
                                                                                                                                               SizedBox(
@@ -7737,6 +7827,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                                               height: 40,
                                                                                                                                               child: ListView(
                                                                                                                                                 scrollDirection: Axis.horizontal,
+                                                                                                                                                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                                 reverse: true,
                                                                                                                                                 children: [
                                                                                                                                                   SizedBox(
@@ -7864,6 +7956,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                                                                                                                   height: 40,
                                                                                                                                                   child: ListView(
                                                                                                                                                     scrollDirection: Axis.horizontal,
+                                                                                                                                                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                                                                                                                                     reverse: true,
                                                                                                                                                     children: [
                                                                                                                                                       SizedBox(
@@ -10334,7 +10428,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               final Timestamp timestamp =
                                   doc.data()['date'] as Timestamp;
                               final DateTime dateTime = timestamp.toDate();
-
                               ads.add(AdDisplayInfo(
                                   title: doc.data()['Title'],
                                   country: doc.data()['Country'],
@@ -10342,8 +10435,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                   subCategory: doc.data()['subCategory'],
                                   subSubCategory: doc.data()['subSubCategory'],
                                   model: doc.data()['model'],
+                                  communication: doc.data()['Communication'],
                                   subCountry: doc.data()['subCountry'],
                                   username: doc.data()['userName'],
+                                  membership:doc.data()['Membership'] ,
+                                  commission:doc.data()['Commission'] ,
                                   docId: doc.id,
                                   photoPath: (doc.data()['photoBool'] == 'true')
                                       ? doc.data()['photo_url 0']
@@ -10442,10 +10538,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             List<AdDisplayInfo> search = (query != '')
                                 ? ads
-                                    .where((element) => element.title
-                                        .toLowerCase()
-                                        .contains(query.toLowerCase()))
-                                    .toList()
+                                .where((element) => element.title
+                                .toLowerCase()
+                                .contains(query.toLowerCase()))
+                                .toList()
                                 : sorted;
                             return Directionality(
                               textDirection: TextDirection.rtl,
@@ -10456,198 +10552,239 @@ class _HomeScreenState extends State<HomeScreen> {
                                   itemCount: (query != '')
                                       ? search.length
                                       : sorted.length,
+                                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+
                                   shrinkWrap: true,
                                   physics: NeverScrollableScrollPhysics(),
                                   //reverse: true,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 25),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      AdDetails(
-                                                          (query != '')
-                                                              ? search[index]
-                                                                  .docId
-                                                              : sorted[index]
-                                                                  .docId,
-                                                          phoneNo)),
-                                            );
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                  itemBuilder: (BuildContext context, int index) {
+
+                                    return Container(
+                                      child: Padding(
+                                          padding: EdgeInsets.only(bottom: 35,),
+                                          child: Column(
                                             children: [
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    (query != '')
-                                                        ? search[index].title
-                                                        : sorted[index].title,
-                                                    textAlign: TextAlign.right,
-                                                    style: TextStyle(
-                                                        fontFamily: 'Bahij',
-                                                        fontSize: 30,
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 15,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.person,
-                                                        color: Colors.black,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        (query != '')
-                                                            ? search[index]
-                                                                .username
-                                                            : sorted[index]
-                                                                .username,
-                                                        style: TextStyle(
-                                                          fontFamily: 'Bahij',
-                                                          fontSize: 20,
-                                                          color: Colors.black,
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            AdDetails(
+                                                                (query != '')
+                                                                    ? search[index].docId
+                                                                    : sorted[index].docId, phoneNo)),
+                                                  );
+                                                },
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.only(left: 10),
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment.start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment.start,
+                                                          children: [
+                                                            Container(
+                                                              child: Text(
+                                                                (query != '')
+                                                                    ? search[index].title
+                                                                    : sorted[index].title,
+                                                                textAlign: TextAlign.right,
+                                                                style: TextStyle(
+                                                                    fontFamily: 'Bahij',
+                                                                    fontSize: 20,
+                                                                    color: Colors.black,
+                                                                    fontWeight:
+                                                                        FontWeight.bold),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 5,
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.person,
+                                                                  color: Colors.black,
+                                                                  size: 18,
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 5,
+                                                                ),
+                                                                Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                  children: [
+                                                                    Text(
+                                                                      (query != '') ? search[index].username :
+                                                                      sorted[index].username,
+                                                                      style: TextStyle(
+                                                                        fontFamily: 'Bahij',
+                                                                        fontSize: 15,
+                                                                        color: Colors.black,
+                                                                      ),
+                                                                    ),
+                                                                    Visibility(
+                                                                      visible: (query != ''),
+                                                                      child:(search[index].membership.toString() == 'Premium')? Container(
+                                                                        margin: EdgeInsets.only(right: 5),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            Image.asset(
+                                                                              'assets/images/icons/star.png',
+                                                                              height: 12,
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ): Container(),
+                                                                      replacement: (sorted[index].membership.toString() == 'Premium')? Container(
+                                                                        margin: EdgeInsets.only(right: 5),
+                                                                        child: Row(
+                                                                          children: [
+                                                                            Image.asset(
+                                                                              'assets/images/icons/star.png',
+                                                                              height: 12,
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ): Container(),
+                                                                    ),
+
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+
+                                                            Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.pin_drop,
+                                                                  color: Colors.black,
+                                                                  size: 18,
+
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 5,
+                                                                ),
+                                                                Text(
+                                                                  ( (query != '') ? search[index].country : sorted[index].country)=="All"?"كل المناطق": ( (query != '') ? search[index].country : sorted[index].country),
+                                                                  style: TextStyle(
+                                                                    fontFamily: 'Bahij',
+                                                                    fontSize: 15,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+
+                                                            Row(
+                                                              children: [
+                                                                Icon(
+                                                                  Icons.timelapse,
+                                                                  color: Colors.black,
+                                                                  size: 18,
+
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 5,
+                                                                ),
+                                                                Text(
+                                                                  (query != '')
+                                                                      ? (sorted[index].dateDays != 0)
+                                                                          ? "قبل ${search[index].dateDays} ايام"
+                                                                          : (sorted[index]
+                                                                                      .dateHours !=
+                                                                                  0)
+                                                                              ? "قبل ${search[index].dateHours} ساعات"
+                                                                              : "قبل ${search[index].dateMins} دقائق"
+                                                                      : (sorted[index]
+                                                                                  .dateDays !=
+                                                                              0)
+                                                                          ? "قبل ${sorted[index].dateDays} ايام"
+                                                                          : (sorted[index]
+                                                                                      .dateHours !=
+                                                                                  0)
+                                                                              ? "قبل ${sorted[index].dateHours} ساعات"
+                                                                              : "قبل ${sorted[index].dateMins} دقائق",
+                                                                  style: TextStyle(
+                                                                    fontFamily: 'Bahij',
+                                                                    fontSize: 15,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            )
+                                                          ],
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.pin_drop,
-                                                        color: Colors.black,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        (query != '')
-                                                            ? search[index]
-                                                                .country
-                                                            : sorted[index]
-                                                                .country,
-                                                        style: TextStyle(
-                                                          fontFamily: 'Bahij',
-                                                          fontSize: 20,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.timelapse,
-                                                        color: Colors.black,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        (query != '')
-                                                            ? (sorted[index]
-                                                                        .dateDays !=
-                                                                    0)
-                                                                ? "قبل ${search[index].dateDays} ايام"
-                                                                : (sorted[index]
-                                                                            .dateHours !=
-                                                                        0)
-                                                                    ? "قبل ${search[index].dateHours} ساعات"
-                                                                    : "قبل ${search[index].dateMins} دقائق"
-                                                            : (sorted[index]
-                                                                        .dateDays !=
-                                                                    0)
-                                                                ? "قبل ${sorted[index].dateDays} ايام"
-                                                                : (sorted[index]
-                                                                            .dateHours !=
-                                                                        0)
-                                                                    ? "قبل ${sorted[index].dateHours} ساعات"
-                                                                    : "قبل ${sorted[index].dateMins} دقائق",
-                                                        style: TextStyle(
-                                                          fontFamily: 'Bahij',
-                                                          fontSize: 20,
-                                                          color: Colors.black,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                              ((query != '')
-                                                      ? search[index]
-                                                              .photoBool ==
-                                                          'true'
-                                                      : sorted[index]
-                                                              .photoBool ==
-                                                          'true')
-                                                  ? FutureBuilder<String>(
+                                                    ),
+                                                    /// image islam
+                                                    ((query != '')
+                                                        ? search[index]
+                                                        .photoBool ==
+                                                        'true'
+                                                        : sorted[index]
+                                                        .photoBool ==
+                                                        'true')
+                                                        ? FutureBuilder<String>(
                                                       future: downloadUrl(
                                                           (query != '')
                                                               ? search[index]
-                                                                  .photoPath
+                                                              .photoPath
                                                               : sorted[index]
-                                                                  .photoPath),
+                                                              .photoPath),
                                                       builder:
                                                           (context, snapshot) {
                                                         if (snapshot
-                                                                .connectionState ==
+                                                            .connectionState ==
                                                             ConnectionState
                                                                 .waiting)
                                                           return Center(
                                                             child:
-                                                                CircularProgressIndicator(),
+                                                            CircularProgressIndicator(),
                                                           );
                                                         return ClipRRect(
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
+                                                          BorderRadius
+                                                              .circular(
+                                                              8.0),
                                                           child: Image.network(
-                                                            snapshot.data
-                                                                .toString(),
-                                                            width: 150,
-                                                            height: 150,
+                                                            snapshot.data.toString(),
+                                                            width: width*0.2,
+                                                            height: width*0.2,
                                                             fit: BoxFit.cover,
                                                           ),
                                                         );
                                                       },
                                                     )
-                                                  : ClipRRect(
+                                                        : ClipRRect(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                      BorderRadius.circular(
+                                                          8.0),
                                                       child: Image.asset(
                                                         'assets/images/no_image.png',
-                                                        width: 150,
-                                                        height: 150,
+                                                        width: width*0.2,
+                                                        height: width*0.2,
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                height: 20,
+                                              ),
+                                              Container(
+                                                height: 1,
+                                                color: Colors.grey.withOpacity(0.1),
+                                              ),
                                             ],
-                                          ),
-                                        ));
+                                          )),
+                                    );
                                   },
                                 ),
                               ),
@@ -10682,7 +10819,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Container(
-            height: MediaQuery.of(context).size.height / 2,
+            height: MediaQuery.of(context).size.height / 2.1,
             padding: EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -10691,7 +10828,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'اختر المنطقة',
                   style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontFamily: "Bahij",
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -10707,7 +10844,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 15,
                 ),
                 Container(
-                  height: (MediaQuery.of(context).size.height / 2) - 134,
+                  height: (MediaQuery.of(context).size.height / 2) - 150,
                   child: VsScrollbar(
                     controller: list1,
                     isAlwaysShown: true,
@@ -10762,7 +10899,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Container(
-            height: MediaQuery.of(context).size.height / 2,
+            height: MediaQuery.of(context).size.height / 2.1,
             padding: EdgeInsets.only(left: 15, right: 15, bottom: 15, top: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -10771,7 +10908,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Text(
                   'اختر المدينة',
                   style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontFamily: "Bahij",
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -10787,7 +10924,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 15,
                 ),
                 Container(
-                  height: (MediaQuery.of(context).size.height / 2) - 134,
+                  height: (MediaQuery.of(context).size.height / 2) - 150,
                   child: VsScrollbar(
                     controller: list1,
                     isAlwaysShown: true,

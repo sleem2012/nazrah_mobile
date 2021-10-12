@@ -10653,6 +10653,18 @@ class _EditAdScreenState extends State<EditAdScreen> {
                         )),
                       ),
                       onPressed: () async {
+                        String commission ;
+                        String membership ;
+
+                        await _firestore
+                            .collection('users')
+                            .doc(phoneNo)
+                            .get()
+                            .then((DocumentSnapshot documentSnapshot) => {
+                          commission = documentSnapshot.data()['Commission'],
+                          membership = documentSnapshot.data()['Membership'],
+
+                        });
                         if (photoEditited != true) {
                           _firestore.collection('ads').doc(docId).update({
                             'selectedCategory': selectedCategory,
@@ -10663,6 +10675,9 @@ class _EditAdScreenState extends State<EditAdScreen> {
                             'subCountry': subCountry,
                             'Title': title,
                             'Communication': communication,
+                            'Commission': commission,
+                            'Membership': membership,
+
                             'Description': description,
                             'priceBool': priceBool,
                             'price': price,
@@ -10684,6 +10699,9 @@ class _EditAdScreenState extends State<EditAdScreen> {
                             'subCountry': subCountry,
                             'Title': title,
                             'Communication': communication,
+                            'Commission': commission,
+                            'Membership': membership,
+
                             'Description': description,
                             'priceBool': priceBool,
                             'price': price,
@@ -10762,7 +10780,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
                 Text(
                   'اختر المنطقة',
                   style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontFamily: "Bahij",
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -10771,7 +10789,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
                   height: 15,
                 ),
                 Container(
-                  height: (MediaQuery.of(context).size.height / 2) - 107,
+                  height: (MediaQuery.of(context).size.height / 2) - 110,
                   child: VsScrollbar(
                     controller: list1,
                     isAlwaysShown: true,
@@ -11156,7 +11174,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
                 Text(
                   'اختر المدينة',
                   style: TextStyle(
-                      fontSize: 40,
+                      fontSize: 30,
                       fontFamily: "Bahij",
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -11172,7 +11190,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
                   height: 15,
                 ),
                 Container(
-                  height: (MediaQuery.of(context).size.height / 2) - 134,
+                  height: (MediaQuery.of(context).size.height / 2) - 150,
                   child: VsScrollbar(
                     controller: list1,
                     isAlwaysShown: true,

@@ -179,7 +179,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                   "لاتوجد اشعارات فالوقت الحالي",
                                   style: TextStyle(
                                       fontFamily: 'Bahij',
-                                      fontSize: 25,
+                                      fontSize: 18,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),

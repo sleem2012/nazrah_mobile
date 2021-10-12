@@ -186,6 +186,7 @@ class _CommissionScreenState extends State<CommissionScreen> {
                                     ),
                                     Text(
                                       "عمولة السلع و الخدمات الأخرى",
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontFamily: 'Bahij',
                                           fontSize: 30,

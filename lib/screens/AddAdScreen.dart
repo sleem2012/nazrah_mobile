@@ -10506,14 +10506,18 @@ class _AddAdScreenState extends State<AddAdScreen> {
                             title != '' ||
                             communication != '') {
                           String membership;
+                          String commission;
+                          /// here islam
                           await FirebaseFirestore.instance
                               .collection('users')
                               .doc(phoneNo)
                               .get()
                               .then((DocumentSnapshot documentSnapshot) => {
-                                    membership =
-                                        documentSnapshot.data()['Membership'],
+                                    commission = documentSnapshot.data()['Commission'],
+                                    membership = documentSnapshot.data()['Membership'],
                                   });
+
+
                           if (membership == 'free') {
                             bool repeated = false;
                             await FirebaseFirestore.instance
@@ -10540,10 +10544,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                               DateTime dateTime2;
 
                               bool time = false;
-                              await FirebaseFirestore.instance
-                                  .collection('ads')
-                                  .where('user', isEqualTo: phoneNo)
-                                  .get()
+                              await FirebaseFirestore.instance.collection('ads').where('user', isEqualTo: phoneNo).get()
                                   .then((QuerySnapshot snapshot) => {
                                         if (snapshot.docs.length != 0 ||
                                             snapshot.docs.isNotEmpty)
@@ -10588,6 +10589,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                     'subCountry': subCountry,
                                     'Title': title,
                                     'Communication': communication,
+                                    'Commission': commission,
+                                    'Membership': membership,
                                     'Description': description,
                                     'priceBool': priceBool,
                                     'price': price,
@@ -10630,6 +10633,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                     'subCountry': subCountry,
                                     'Title': title,
                                     'Communication': communication,
+                                    'Commission': commission,
+                                    'Membership': membership,
+
                                     'Description': description,
                                     'priceBool': priceBool,
                                     'price': price,
@@ -10690,6 +10696,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                     'subCountry': subCountry,
                                     'Title': title,
                                     'Communication': communication,
+                                    'Commission': commission,
+                                    'Membership': membership,
                                     'Description': description,
                                     'priceBool': priceBool,
                                     'price': price,
@@ -10764,6 +10772,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                     'subCountry': subCountry,
                                     'Title': title,
                                     'Communication': communication,
+                                    'Commission': commission,
+                                    'Membership': membership,
+
                                     'Description': description,
                                     'priceBool': priceBool,
                                     'price': price,
@@ -10803,7 +10814,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 );
                               }
                             }
-                          } else {
+                          }
+                          else {
                             if (priceBool == 'true' &&
                                 price != '' &&
                                 photoBool != 'true') {
@@ -10828,6 +10840,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 'subCountry': subCountry,
                                 'Title': title,
                                 'Communication': communication,
+                                'Commission': commission,
+                                'Membership': membership,
+
                                 'Description': description,
                                 'priceBool': priceBool,
                                 'price': price,
@@ -10867,6 +10882,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 'subCountry': subCountry,
                                 'Title': title,
                                 'Communication': communication,
+                                'Commission': commission,
+                                'Membership': membership,
+
                                 'Description': description,
                                 'priceBool': priceBool,
                                 'price': price,
@@ -10881,7 +10899,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => CongratAdScreen()),
                               );
-                            } else if (priceBool == 'false' &&
+                            }
+                            else if (priceBool == 'false' &&
                                 price == '' &&
                                 photoBool != 'false') {
                               String userName = '';
@@ -10922,6 +10941,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 'subCountry': subCountry,
                                 'Title': title,
                                 'Communication': communication,
+                                'Commission': commission,
+                                'Membership': membership,
+
                                 'Description': description,
                                 'priceBool': priceBool,
                                 'price': price,
@@ -10949,7 +10971,8 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => CongratAdScreen()),
                               );
-                            } else if (priceBool == 'true' &&
+                            }
+                            else if (priceBool == 'true' &&
                                 price != '' &&
                                 photoBool != 'false') {
                               String userName = '';
@@ -10990,6 +11013,9 @@ class _AddAdScreenState extends State<AddAdScreen> {
                                 'subCountry': subCountry,
                                 'Title': title,
                                 'Communication': communication,
+                                'Commission': commission,
+                                'Membership': membership,
+
                                 'Description': description,
                                 'priceBool': priceBool,
                                 'price': price,
@@ -11066,7 +11092,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                   height: 15,
                 ),
                 Container(
-                  height: (MediaQuery.of(context).size.height / 2) - 107,
+                  height: (MediaQuery.of(context).size.height / 2) - 120,
                   child: VsScrollbar(
                     controller: list1,
                     isAlwaysShown: true,

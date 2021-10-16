@@ -10425,9 +10425,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             List<AdDisplayInfo> ads = [];
 
                             for (var doc in snapshot.data.docs) {
-                              final Timestamp timestamp =
-                                  doc.data()['date'] as Timestamp;
+                              final Timestamp timestamp = doc.data()['date'] as Timestamp;
                               final DateTime dateTime = timestamp.toDate();
+
                               ads.add(AdDisplayInfo(
                                   title: doc.data()['Title'],
                                   country: doc.data()['Country'],
@@ -10455,6 +10455,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   dateMins: DateTime.now()
                                       .difference(dateTime)
                                       .inMinutes));
+
+
                             }
 
                             List<AdDisplayInfo> sorted = (selectedCategory !=
@@ -10564,7 +10566,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           padding: EdgeInsets.only(bottom: 35,),
                                           child: Column(
                                             children: [
-                                              GestureDetector(
+                                              InkWell(
                                                 onTap: () {
                                                   Navigator.push(
                                                     context,
@@ -10774,6 +10776,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   ],
                                                 ),
+                                                splashColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
                                               ),
                                               Container(
                                                 height: 20,

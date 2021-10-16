@@ -10777,7 +10777,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ],
                                                 ),
                                                 splashColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
                                               ),
                                               Container(
                                                 height: 20,

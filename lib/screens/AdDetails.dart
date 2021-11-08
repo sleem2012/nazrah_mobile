@@ -139,8 +139,7 @@ class _AdDetailsState extends State<AdDetails> {
 
                     int dateDays = DateTime.now().difference(dateTime).inDays;
                     int dateHours = DateTime.now().difference(dateTime).inHours;
-                    int dateMins =
-                        DateTime.now().difference(dateTime).inMinutes;
+                    int dateMins = DateTime.now().difference(dateTime).inMinutes;
                     List imagePaths = [];
 
                     if (photoBool == 'true') {
@@ -455,11 +454,7 @@ class _AdDetailsState extends State<AdDetails> {
                                 Row(
                                   children: [
                                     Text(
-                                      (dateDays != 0)
-                                          ? "قبل $dateDays ايام"
-                                          : (dateHours != 0)
-                                              ? "قبل $dateHours ساعات"
-                                              : "قبل $dateMins دقائق",
+                                      (dateDays != 0) ? "قبل $dateDays ايام" : (dateHours != 0) ? "قبل $dateHours ساعات" : "قبل $dateMins دقائق",
                                       style: TextStyle(
                                         fontFamily: 'Bahij',
                                         fontSize: 20,

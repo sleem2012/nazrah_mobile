@@ -10759,6 +10759,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                                             width: width*0.2,
                                                             height: width*0.2,
                                                             fit: BoxFit.cover,
+                                                            errorBuilder: (context, error, stackTrace) {
+                                                              return ClipRRect(
+                                                                borderRadius:
+                                                                BorderRadius.circular(
+                                                                    8.0),
+                                                                child: Image.asset(
+                                                                  'assets/images/no_image.png',
+                                                                  width: width*0.2,
+                                                                  height: width*0.2,
+                                                                  fit: BoxFit.cover,
+                                                                ),
+                                                              );
+                                                            },
                                                           ),
                                                         );
                                                       },

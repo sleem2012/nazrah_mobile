@@ -137,7 +137,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
   ScrollController list3 = ScrollController();
   bool photoEditited = false;
   String photoBool2 = 'false';
-  bool deal = true;
+  // bool deal = true;
   Stream stream;
 
   String country,
@@ -9774,59 +9774,59 @@ class _EditAdScreenState extends State<EditAdScreen> {
                     thickness: 1,
                     color: Color(0xff818181),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "إتفاقية العمولة",
-                    style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 30,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("بسم الله الرحمن الرحيم",
-                      style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.center),
-                  Text(
-                      "قال الله تعالى:' وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً 'صدق الله العظيم",
-                      style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.center),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: CheckboxListTile(
-                      title: Text(
-                        "* اتعهد واقسم بالله أنا المعلن أن أدفع عمولة الموقع وهي 0.5% من قيمة البيع سواء تم البيع عن طريق الموقع أو بسببه.\n* كما أتعهد بدفع العمولة خلال 10 أيام من استلام كامل مبلغ المبايعة.",
-                        style: TextStyle(
-                          fontFamily: 'Bahij',
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                      value: deal,
-                      onChanged: (newValue) {
-                        setState(() {
-                          deal = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,
-                    ),
-                  ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   "إتفاقية العمولة",
+                  //   style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 30,
+                  //       color: Colors.grey,
+                  //       fontWeight: FontWeight.bold),
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text("بسم الله الرحمن الرحيم",
+                  //     style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 20,
+                  //       color: Colors.grey,
+                  //     ),
+                  //     textAlign: TextAlign.center),
+                  // Text(
+                  //     "قال الله تعالى:' وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً 'صدق الله العظيم",
+                  //     style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 20,
+                  //       color: Colors.grey,
+                  //     ),
+                  //     textAlign: TextAlign.center),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Directionality(
+                  //   textDirection: TextDirection.rtl,
+                  //   child: CheckboxListTile(
+                  //     title: Text(
+                  //       "* اتعهد واقسم بالله أنا المعلن أن أدفع عمولة الموقع وهي 0.5% من قيمة البيع سواء تم البيع عن طريق الموقع أو بسببه.\n* كما أتعهد بدفع العمولة خلال 10 أيام من استلام كامل مبلغ المبايعة.",
+                  //       style: TextStyle(
+                  //         fontFamily: 'Bahij',
+                  //         fontSize: 20,
+                  //         color: Colors.black,
+                  //       ),
+                  //       textAlign: TextAlign.right,
+                  //     ),
+                  //     value: deal,
+                  //     onChanged: (newValue) {
+                  //       setState(() {
+                  //         deal = newValue;
+                  //       });
+                  //     },
+                  //     controlAffinity: ListTileControlAffinity.leading,
+                  //   ),
+                  // ),
                   (subSubCategory != 'null')
                       ? Column(
                           children: [

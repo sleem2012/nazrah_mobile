@@ -107,37 +107,37 @@ class NavigationDrawerWidget extends StatelessWidget {
             SizedBox(
               height: 24,
             ),
-            buildMenuItem(
-                text: 'العضويات',
-                icon: Icons.card_membership,
-                ontap: () {
-                  Navigator.pop(context);
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MembershipScreen()),
-                  );
-                }),
-            buildMenuItem(
-                text: 'العمولة',
-                icon: Icons.calculate,
-                ontap: () {
-                  Navigator.pop(context);
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CommissionScreen()),
-                  );
-                }),
-            SizedBox(
-              height: 24,
-            ),
-            Divider(
-              color: Colors.white70,
-            ),
-            SizedBox(
-              height: 24,
-            ),
+            // buildMenuItem(
+            //     text: 'العضويات',
+            //     icon: Icons.card_membership,
+            //     ontap: () {
+            //       Navigator.pop(context);
+            //
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => MembershipScreen()),
+            //       );
+            //     }),
+            // buildMenuItem(
+            //     text: 'العمولة',
+            //     icon: Icons.calculate,
+            //     ontap: () {
+            //       Navigator.pop(context);
+            //
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => CommissionScreen()),
+            //       );
+            //     }),
+            // SizedBox(
+            //   height: 24,
+            // ),
+            // Divider(
+            //   color: Colors.white70,
+            // ),
+            // SizedBox(
+            //   height: 24,
+            // ),
             StreamBuilder<DocumentSnapshot>(
                 stream: loadMyPages(),
                 builder: (context, snapshot) {

@@ -21,7 +21,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
   String phoneNo;
   _AddAdScreenState({@required this.phoneNo});
 
-  bool deal = false;
+  // bool deal = false;
   String selectedCategory = 'All';
   String subCategory = 'null';
   String subSubCategory = 'null';
@@ -9655,63 +9655,63 @@ class _AddAdScreenState extends State<AddAdScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Divider(
-                    thickness: 1,
-                    color: Color(0xff818181),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    "إتفاقية العمولة",
-                    style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 30,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text("بسم الله الرحمن الرحيم",
-                      style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.center),
-                  Text(
-                      "قال الله تعالى:' وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً 'صدق الله العظيم",
-                      style: TextStyle(
-                        fontFamily: 'Bahij',
-                        fontSize: 20,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.center),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: CheckboxListTile(
-                      title: Text(
-                        "* اتعهد واقسم بالله أنا المعلن أن أدفع عمولة الموقع وهي 0.5% من قيمة البيع سواء تم البيع عن طريق الموقع أو بسببه.\n* كما أتعهد بدفع العمولة خلال 10 أيام من استلام كامل مبلغ المبايعة.",
-                        style: TextStyle(
-                          fontFamily: 'Bahij',
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                      value: deal,
-                      onChanged: (newValue) {
-                        setState(() {
-                          deal = newValue;
-                        });
-                      },
-                      controlAffinity: ListTileControlAffinity.leading,
-                    ),
-                  ),
+                  // Divider(
+                  //   thickness: 1,
+                  //   color: Color(0xff818181),
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text(
+                  //   "إتفاقية العمولة",
+                  //   style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 30,
+                  //       color: Colors.grey,
+                  //       fontWeight: FontWeight.bold),
+                  // ),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Text("بسم الله الرحمن الرحيم",
+                  //     style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 20,
+                  //       color: Colors.grey,
+                  //     ),
+                  //     textAlign: TextAlign.center),
+                  // Text(
+                  //     "قال الله تعالى:' وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً 'صدق الله العظيم",
+                  //     style: TextStyle(
+                  //       fontFamily: 'Bahij',
+                  //       fontSize: 20,
+                  //       color: Colors.grey,
+                  //     ),
+                  //     textAlign: TextAlign.center),
+                  // SizedBox(
+                  //   height: 20,
+                  // ),
+                  // Directionality(
+                  //   textDirection: TextDirection.rtl,
+                  //   child: CheckboxListTile(
+                  //     title: Text(
+                  //       "* اتعهد واقسم بالله أنا المعلن أن أدفع عمولة الموقع وهي 0.5% من قيمة البيع سواء تم البيع عن طريق الموقع أو بسببه.\n* كما أتعهد بدفع العمولة خلال 10 أيام من استلام كامل مبلغ المبايعة.",
+                  //       style: TextStyle(
+                  //         fontFamily: 'Bahij',
+                  //         fontSize: 20,
+                  //         color: Colors.black,
+                  //       ),
+                  //       textAlign: TextAlign.right,
+                  //     ),
+                  //     value: deal,
+                  //     onChanged: (newValue) {
+                  //       setState(() {
+                  //         deal = newValue;
+                  //       });
+                  //     },
+                  //     controlAffinity: ListTileControlAffinity.leading,
+                  //   ),
+                  // ),
                   (subSubCategory != 'null')
                       ? Column(
                           children: [
@@ -10501,10 +10501,7 @@ class _AddAdScreenState extends State<AddAdScreen> {
                         )),
                       ),
                       onPressed: () async {
-                        if (deal == true ||
-                            country != 'All' ||
-                            title != '' ||
-                            communication != '') {
+                        if (country != 'All' || title != '' || communication != '') {
                           String membership;
                           String commission;
                           /// here islam
